@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
     <link rel="stylesheet" href="style9.css">
     
     <title>Star Events</title>
@@ -26,10 +27,10 @@
               </div>
               <div class="collapse navbar-collapse" id="hide">
               <ul class="nav navbar-nav navbar-right">
-                <li><a class="nav-link active" href="#" onclick="initial()"><b>Home</b></a></li>
-                <li><a class="nav-link" href="#" onclick="initial1()"><b>Registration Form</b></a></li>
-                <li><a class="nav-link" href="#" onclick="initial2()"><b>Show Registrations</b></a></li>
-                <li><a class="nav-link" href="#" onclick="initial0()"><b>Contact Us</b></a></li>
+                <li><a class="active" href="#" onclick="initial()"><b>Home</b></a></li>
+                <li><a  href="#" onclick="initial1()"><b>Registration Form</b></a></li>
+                <li><a  href="#" onclick="initial2()"><b>Show Registrations</b></a></li>
+                <li><a href="#" onclick="initial0()"><b>Contact Us</b></a></li>
               </ul>
             </div>
         </div>
@@ -105,7 +106,7 @@
             <h3 style="color: rgb(228, 87, 36); font-size: xx-large; text-shadow: rgb(197, 132, 109);"><b>Registration</b></h3>
               <form id="form_register">
                   <div class="form-group">
-                      <input type="text" class="form-control" name="fname" placeholder="Enter first name" id="i1" required>                      
+                      <input  type="text" class="form-control" name="fname" placeholder="Enter first name" id="i1" required>                      
                       <span id="alt1" class="text-danger font-weight-bold"> </span>
                   </div>
                   <div class="form-group">
@@ -259,11 +260,11 @@
                9923279371
            </p><br><br>
       
-           <ul class="social-icons">
-            <li><a href="http://www.facebook.com.rohitsuryawanshi.2065" target="_blank"><img src='facebook.jpg' /></a></li>
-            <li><a href="http://www.instagram.com" target="_blank"><img src='instagram.jpg' /></a></li>
-            <li><a href="http://www.twitter.com" target="_blank"><img src='Twitter.png' /></a></li>
-        </ul>
+           <div class="social-icons">
+            <p><a href="http://www.facebook.com.rohitsuryawanshi.2065" target="_blank"><img src='facebook.jpg' /></a></p>
+            <p><a href="http://www.instagram.com" target="_blank"><img src='instagram.jpg' /></a></p>
+            <p><a href="http://www.twitter.com" target="_blank"><img src='Twitter.png' /></a></p>
+        </div>
            
            <p class="para" style="text-align: center; font-size: large;">
               Feel free to Contact us. We will be available 24/7 at your Service.
@@ -275,8 +276,14 @@
 
 
 
-      
-<script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+      $('ul li a').click(function(){
+      $('li a').removeClass("active");
+      $(this).addClass("active");
+      });
+      });
+
   var today = new Date();
   var t = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
   var a=[
@@ -360,11 +367,15 @@ function initial1(){
       r=document.getElementById("time").value;
       
       if(b == ""){
+        
   document.getElementById('alt1').innerHTML =" *First Name can't be Empty";
+  
+  
   return false;
 }
       else if((b.length <= 3) || (b.length > 20)) {
   document.getElementById('alt1').innerHTML =" *First Name length must be between 2 and 20";
+  
           return false;
 }
       else if(!isNaN(b)){
